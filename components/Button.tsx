@@ -23,7 +23,7 @@ export const Button = ({
       onClick={onClick}
       className={`
         disabled:opacity-70
-        disabled: cursor-not-allowed
+        disabled:cursor-not-allowed
         rounded-full
         font-semibold
         hover: opacity-80
