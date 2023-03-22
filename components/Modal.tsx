@@ -13,7 +13,7 @@ type Props = {
   actionLabel: string;
 };
 
-export const Modal: React.FC<Props> = ({
+export const Modal = ({
   disabled,
   isOpen,
   onClose,
@@ -22,7 +22,7 @@ export const Modal: React.FC<Props> = ({
   body,
   footer,
   actionLabel,
-}) => {
+}: Props) => {
   const handleClose = useCallback(() => {
     if (disabled) {
       return;

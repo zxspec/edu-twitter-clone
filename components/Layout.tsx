@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const Layout: React.FC<Props> = ({ children }) => {
+export const Layout = ({ children }: Props) => {
   return (
     <div className="h-screen bg-black">
       <div className="container h-full mx-auto xl:px-30 max-w-6xl">

@@ -6,13 +6,13 @@ type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Input: React.FC<Props> = ({
+export const Input = ({
   placeholder,
   value,
   type,
   disabled,
   onChange,
-}) => (
+}: Props) => (
   <input
     disabled={disabled}
     onChange={onChange}

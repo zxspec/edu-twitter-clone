@@ -8,7 +8,7 @@ type Props = {
   outline?: boolean;
 };
 
-export const Button: React.FC<Props> = ({
+export const Button = ({
   label,
   secondary,
   fullWidth,
@@ -16,7 +16,7 @@ export const Button: React.FC<Props> = ({
   outline,
   disabled,
   onClick,
-}) => {
+}: Props) => {
   return (
     <button
       disabled={disabled}

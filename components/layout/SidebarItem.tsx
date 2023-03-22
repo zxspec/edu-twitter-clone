@@ -7,7 +7,7 @@ type Props = {
   onClick: () => void;
 };
 
-export const SidebarItem: React.FC<Props> = ({ icon: Icon, label }) => (
+export const SidebarItem = ({ icon: Icon, label }: Props) => (
   <div className="flex flex-row items-center">
     <div
       className="

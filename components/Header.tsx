@@ -7,7 +7,7 @@ type Props = {
   showBackArrow?: boolean;
 };
 
-export const Header: React.FC<Props> = ({ label, showBackArrow }) => {
+export const Header = ({ label, showBackArrow }: Props) => {
   const router = useRouter();
   const handleBack = useCallback(() => {
     router.back();
