@@ -1,4 +1,5 @@
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { useEditModal } from "@/hooks/useEditModal";
 import { useUser } from "@/hooks/useUser";
 import { format } from "date-fns";
 import { useMemo } from "react";
@@ -12,6 +13,8 @@ export function UserBio({ userId }: Props) {
   const { data: currentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(userId);
 
+  const editModal = useEditModal();
+
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
       return null;
@@ -23,7 +26,7 @@ export function UserBio({ userId }: Props) {
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {currentUser?.id === userId ? (
-          <Button secondary label="Edit" onClick={() => {}} />
+          <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
           <Button label="Follow" secondary onClick={() => {}} />
         )}
