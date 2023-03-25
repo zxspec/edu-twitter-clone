@@ -3,7 +3,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from '@/libs/prismadb'
 
-export default async function hendler(req: NextApiRequest, res: NextApiResponse) {
+
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void | NextApiResponse<any>> {
     if (req.method !== 'PATCH') {
         return res.status(405).end()
     }
