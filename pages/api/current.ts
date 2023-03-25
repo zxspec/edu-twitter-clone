@@ -1,7 +1,10 @@
 import { serverAuth } from "@/libs/serverAuth";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+import type { User } from "@prisma/client";
+export type CurrentUserData = User
+
+export const handler = async (req: NextApiRequest, res: NextApiResponse<CurrentUserData>) => {
     if (req.method !== 'GET') {
         return res.status(405).end()
     }

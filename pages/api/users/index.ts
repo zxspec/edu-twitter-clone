@@ -1,8 +1,11 @@
+import { User } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from '@/libs/prismadb'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export type Users = User[]
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Users>) {
     if (req.method !== 'GET') {
         return res.status(405).end()
     }
