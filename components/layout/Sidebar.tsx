@@ -21,6 +21,7 @@ export const Sidebar = () => {
       href: "/notifications",
       icon: FaUser,
       auth: true,
+      alert: currentUser?.hasNotification ?? undefined,
     },
     {
       label: "Profile",
@@ -42,6 +43,7 @@ export const Sidebar = () => {
               label={item.label}
               icon={item.icon}
               auth={item.auth}
+              alert={item.alert}
             />
           ))}
           {currentUser && (
