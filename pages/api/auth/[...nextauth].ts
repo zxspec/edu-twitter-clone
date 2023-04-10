@@ -1,14 +1,14 @@
 import bcrypt from "bcrypt"
-import NextAuth from "next-auth"
-import CredentialsProviders from "next-auth/providers/credentials"
+import NextAuth, { AuthOptions } from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
-import prisma from '@/libs/prismadb'
+import prisma from "@/libs/prismadb"
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
-        CredentialsProviders({
+        CredentialsProvider({
             name: 'credentials',
             credentials: {
                 email: { label: 'email', type: 'text' },
@@ -16,7 +16,7 @@ export default NextAuth({
             },
             async authorize(credentials) {
                 if (!credentials?.email || !credentials?.password) {
-                    throw new Error("Invalid Credentials")
+                    throw new Error('Invalid credentials')
                 }
 
                 const user = await prisma.user.findUnique({
@@ -25,8 +25,8 @@ export default NextAuth({
                     }
                 })
 
-                if (!user || !user.hashedPassword) {
-                    throw new Error("Invalid Credentials")
+                if (!user || !user?.hashedPassword) {
+                    throw new Error('Invalid credentials')
                 }
 
                 const isCorrectPassword = await bcrypt.compare(
@@ -35,11 +35,11 @@ export default NextAuth({
                 )
 
                 if (!isCorrectPassword) {
-                    throw new Error("Invalid Credentials")
+                    throw new Error('Invalid credentials')
                 }
 
                 return user
-            },
+            }
         })
     ],
     debug: process.env.NODE_ENV === 'development',
@@ -50,4 +50,6 @@ export default NextAuth({
         secret: process.env.NEXTAUTH_JWT_SECRET
     },
     secret: process.env.NEXTAUTH_SECRET
-}) 
+}
+
+export default NextAuth(authOptions);

@@ -1,3 +1,9 @@
+===
+
+The original Full stack application is developed by https://github.com/AntonioErdeljac/twitter-clone. All the credit for the application development goes to him and I do not intend to take any credit for it.
+
+===
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

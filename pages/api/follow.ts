@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             updatedFollowingIds = updatedFollowingIds.filter(id => id !== userId)
         }
 
-        const { currentUser } = await serverAuth(req)
+        const { currentUser } = await serverAuth(req, res)
         const updatedUser = await prisma.user.update({
             where: {
                 id: currentUser?.id ?? ''
